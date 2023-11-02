@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       title: 'Learning Path AI',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

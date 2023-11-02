@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learning_path_ai/Models/promt_details.dart';
 import 'package:learning_path_ai/Models/user_details.dart';
+import 'package:learning_path_ai/dashboard_pages/start_course.dart';
 
 class homePageDashboard extends StatelessWidget {
   final UserDetails user;
@@ -38,7 +39,10 @@ class homePageDashboard extends StatelessWidget {
             Expanded(
               child: ListView(
                 children: [
-                  CourseItem(courseDetails: promptDetails),
+                  CourseItem(
+                    courseDetails: promptDetails,
+                    userDetails: user,
+                  ),
                   Container(
                     margin: EdgeInsets.all(16),
                     decoration: BoxDecoration(
@@ -84,8 +88,10 @@ class homePageDashboard extends StatelessWidget {
 
 class CourseItem extends StatelessWidget {
   final PromptDetails courseDetails;
+  final UserDetails userDetails;
 
-  const CourseItem({super.key, required this.courseDetails});
+  const CourseItem(
+      {super.key, required this.courseDetails, required this.userDetails});
 
   @override
   Widget build(BuildContext context) {
@@ -118,7 +124,26 @@ class CourseItem extends StatelessWidget {
             alignment: Alignment.centerRight,
             child: TextButton(
               onPressed: () {
-                // Add your logic for starting the course here
+                String customizedPrompt =
+                    "Profession: ${userDetails.profession}\n"
+                    "Education Qualification: ${userDetails.education}\n"
+                    "Learning Objective: ${courseDetails.topicToLearn}\n"
+                    "Experience Level: ${courseDetails.experienceLevel}\n"
+                    "Time Commitment: ${courseDetails.hoursPerWeek} hours per week\n"
+                    "Preferred Course Length: ${courseDetails.preferredCourseLength} weeks\n"
+                    "Learning Goal: ${courseDetails.goal}\n"
+                    "Learning Mode: ${courseDetails.learningMode}\n"
+                    "Learning Preference: ${courseDetails.learningPreference}\n"
+                    "Expertise in Similar Fields: ${courseDetails.similarExpertise}\n\n"
+                    "Please generate an index for a personalized course outline tailored to the user's needs and preferences. The course should be structured in chapters, and each chapter should have a brief description. I will request each chapter's content separately.";
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        ChatPage(initialPrompt: customizedPrompt),
+                  ),
+                );
               },
               style: TextButton.styleFrom(
                 primary: Colors.white,

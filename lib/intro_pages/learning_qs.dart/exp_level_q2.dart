@@ -109,25 +109,6 @@ class _expLevelQuestionTwoState extends State<expLevelQuestionTwo> {
                           });
                         },
                       ),
-
-                      // TextField(
-                      //   controller: nameController,
-                      //   focusNode: nameFocusNode,
-                      //   decoration: InputDecoration(
-                      //     hintText: 'Ex. Python, Java...',
-                      //     //labelText: 'Name',
-                      //     border: InputBorder.none, // Remove border
-                      //   ),
-                      //   onSubmitted: (value) {
-                      //     widget.promptDetails.experienceLevel = value;
-                      //     // Save the value and navigate to the AgePage
-                      //     Navigator.of(context).push(MaterialPageRoute(
-                      //       builder: (context) => LearningForm(
-                      //         user: widget.user,
-                      //       ),
-                      //     ));
-                      //   },
-                      // ),
                     ),
                   ],
                 ),
