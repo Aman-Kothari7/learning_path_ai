@@ -52,7 +52,7 @@ class _goalQuestionFiveState extends State<goalQuestionFive> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '5/8',
+                '5/7',
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
               SizedBox(

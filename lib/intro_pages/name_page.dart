@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learning_path_ai/Models/user_details.dart';
 import 'package:learning_path_ai/intro_pages/age_page.dart';
+import 'package:learning_path_ai/intro_pages/learning_qs.dart/topic_q1.dart';
 
 class NamePage extends StatefulWidget {
   final UserDetails user;
@@ -73,7 +74,7 @@ class _NamePageState extends State<NamePage> {
                           widget.user.name = value;
                           // Save the value and navigate to the AgePage
                           Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => AgePage(
+                            builder: (context) => topicQuestionOne(
                               user: widget.user,
                             ),
                           ));

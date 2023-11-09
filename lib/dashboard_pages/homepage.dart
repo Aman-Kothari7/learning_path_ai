@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:learning_path_ai/Models/promt_details.dart';
 import 'package:learning_path_ai/Models/user_details.dart';
 import 'package:learning_path_ai/dashboard_pages/start_course.dart';
+import 'package:learning_path_ai/intro_pages/education_page.dart';
 
 class homePageDashboard extends StatelessWidget {
   final UserDetails user;
@@ -42,6 +43,7 @@ class homePageDashboard extends StatelessWidget {
                   CourseItem(
                     courseDetails: promptDetails,
                     userDetails: user,
+                    promptDetails: promptDetails,
                   ),
                   Container(
                     margin: EdgeInsets.all(16),
@@ -89,9 +91,13 @@ class homePageDashboard extends StatelessWidget {
 class CourseItem extends StatelessWidget {
   final PromptDetails courseDetails;
   final UserDetails userDetails;
+  final PromptDetails promptDetails;
 
   const CourseItem(
-      {super.key, required this.courseDetails, required this.userDetails});
+      {super.key,
+      required this.courseDetails,
+      required this.userDetails,
+      required this.promptDetails});
 
   @override
   Widget build(BuildContext context) {
@@ -114,43 +120,33 @@ class CourseItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text('Topic: ${courseDetails.topicToLearn}'),
-              Text('Learning Mode: ${courseDetails.learningMode}'),
-              Text('Duration: ${courseDetails.preferredCourseLength} weeks'),
-              Text('Learning Preference: ${courseDetails.learningPreference}'),
-              Text('Goal: ${courseDetails.goal}'),
-            ],
-          ),
-          Align(
-            alignment: Alignment.centerRight,
-            child: TextButton(
-              onPressed: () {
-                String customizedPrompt =
-                    "Profession: ${userDetails.profession}\n"
-                    "Education Qualification: ${userDetails.education}\n"
-                    "Learning Objective: ${courseDetails.topicToLearn}\n"
-                    "Experience Level: ${courseDetails.experienceLevel}\n"
-                    "Time Commitment: ${courseDetails.hoursPerWeek} hours per week\n"
-                    "Preferred Course Length: ${courseDetails.preferredCourseLength} weeks\n"
-                    "Learning Goal: ${courseDetails.goal}\n"
-                    "Learning Mode: ${courseDetails.learningMode}\n"
-                    "Learning Preference: ${courseDetails.learningPreference}\n"
-                    "Expertise in Similar Fields: ${courseDetails.similarExpertise}\n\n"
-                    "Please generate an index for a personalized course outline tailored to the user's needs and preferences. The course should be structured in chapters, and each chapter should have a brief description. I will request each chapter's content separately.";
+              Text('Experience Level: ${courseDetails.experienceLevel}'),
+              Text('Similar field: ${courseDetails.similarExpertise}'),
+              // Text('Learning Mode: ${courseDetails.learningMode}'),
+              // Text('Duration: ${courseDetails.preferredCourseLength} weeks'),
+              // Text('Learning Preference: ${courseDetails.learningPreference}'),
+              // Text('Goal: ${courseDetails.goal}'),
 
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) =>
-                        ChatPage(initialPrompt: customizedPrompt),
-                  ),
-                );
-              },
-              style: TextButton.styleFrom(
-                primary: Colors.white,
-                backgroundColor: Colors.grey,
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => EducationPage(
+                        user: userDetails,
+                        promptDetails: promptDetails,
+                      ),
+                    ),
+                  );
+                },
+                style: TextButton.styleFrom(
+                  primary: Colors.white,
+                  backgroundColor: Colors.grey,
+                ),
+                child: Text('Create Learning Path',
+                    style: TextStyle(fontSize: 16)),
               ),
-              child: Text('Start Course', style: TextStyle(fontSize: 16)),
-            ),
+            ],
           ),
         ],
       ),

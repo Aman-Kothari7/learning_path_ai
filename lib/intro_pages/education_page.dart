@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:learning_path_ai/Models/promt_details.dart';
 import 'package:learning_path_ai/Models/user_details.dart';
 import 'package:learning_path_ai/intro_pages/age_page.dart';
 import 'package:learning_path_ai/intro_pages/learning_qs.dart/topic_q1.dart';
+import 'package:learning_path_ai/intro_pages/profession_page.dart';
 import 'package:learning_path_ai/prompt_creation_pages/learning_form.dart';
 
 class EducationPage extends StatefulWidget {
   final UserDetails user;
+  final PromptDetails promptDetails;
 
-  const EducationPage({super.key, required this.user});
+  const EducationPage(
+      {super.key, required this.user, required this.promptDetails});
 
   @override
   _EducationPageState createState() => _EducationPageState();
@@ -44,14 +48,14 @@ class _EducationPageState extends State<EducationPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '>',
+                'Answer following questions',
                 style: TextStyle(fontSize: 60, fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 10,
               ),
               Text(
-                'Just a few more steps...',
+                'To customize your learning path',
                 style: TextStyle(fontSize: 16, color: Colors.grey),
               ),
               SizedBox(height: 20),
@@ -78,8 +82,9 @@ class _EducationPageState extends State<EducationPage> {
                           widget.user.education = value;
                           // Save the value and navigate to the AgePage
                           Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => topicQuestionOne(
+                            builder: (context) => ProfessionPage(
                               user: widget.user,
+                              promptDetails: widget.promptDetails,
                             ),
                           ));
                         },

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:learning_path_ai/Models/promt_details.dart';
 import 'package:learning_path_ai/Models/user_details.dart';
 import 'package:learning_path_ai/dashboard_pages/homepage.dart';
+import 'package:learning_path_ai/dashboard_pages/topic_intro.dart';
 import 'package:learning_path_ai/intro_pages/age_page.dart';
 import 'package:learning_path_ai/intro_pages/learning_qs.dart/course_length_q4.dart';
 import 'package:learning_path_ai/intro_pages/learning_qs.dart/exp_level_q2.dart';
@@ -55,7 +56,7 @@ class _similarFieldQuestionEightState extends State<similarFieldQuestionEight> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '8/8',
+                '>',
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
               SizedBox(
@@ -85,14 +86,18 @@ class _similarFieldQuestionEightState extends State<similarFieldQuestionEight> {
                           //labelText: 'Name',
                           border: InputBorder.none, // Remove border
                         ),
-                        keyboardType: TextInputType.number,
                         onSubmitted: (value) {
                           widget.promptDetails.similarExpertise = value;
-                          // Save the value and navigate to the AgePage
+
+                          String customizedPrompt =
+                              "You are my teacher. Give me a small introduction on this topic:${widget.promptDetails.topicToLearn} considering my experience level with this topic is: ${widget.promptDetails.experienceLevel} and I have expertise in this similar field:${widget.promptDetails.similarExpertise}\n"
+                              "Skip the introductory phrases.";
+                          ;
                           Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => homePageDashboard(
+                            builder: (context) => topicIntroPage(
                               user: widget.user,
                               promptDetails: widget.promptDetails,
+                              initialPrompt: customizedPrompt,
                             ),
                           ));
                         },

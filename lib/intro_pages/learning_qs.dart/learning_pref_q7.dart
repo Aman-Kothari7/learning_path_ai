@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learning_path_ai/Models/promt_details.dart';
 import 'package:learning_path_ai/Models/user_details.dart';
+import 'package:learning_path_ai/dashboard_pages/start_course.dart';
 import 'package:learning_path_ai/intro_pages/age_page.dart';
 import 'package:learning_path_ai/intro_pages/learning_qs.dart/hours_per_week_q3.dart';
 import 'package:learning_path_ai/intro_pages/learning_qs.dart/similar_field_q8.dart';
@@ -55,7 +56,7 @@ class _learningPrefQuestionSevenState extends State<learningPrefQuestionSeven> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '7/8',
+                '7/7',
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
               SizedBox(
@@ -95,14 +96,36 @@ class _learningPrefQuestionSevenState extends State<learningPrefQuestionSeven> {
                             widget.promptDetails.learningPreference =
                                 value!; // Update the promptDetails object
                           });
+                          String customizedPrompt =
+                              "Given the following user information:\n"
+                              "Occupation: ${widget.user.profession}\n"
+                              "Education Qualification: ${widget.user.education}\n"
+                              "Learning Objective: ${widget.promptDetails.topicToLearn}\n"
+                              "Experience Level: ${widget.promptDetails.experienceLevel}\n"
+                              "Time Commitment: ${widget.promptDetails.hoursPerWeek} hours per week\n"
+                              "Preferred Course Length: ${widget.promptDetails.preferredCourseLength} weeks\n"
+                              "Learning Goal: ${widget.promptDetails.goal}\n"
+                              "Learning Mode: ${widget.promptDetails.learningMode}\n"
+                              "Learning Preference: ${widget.promptDetails.learningPreference}\n"
+                              "Expertise in Similar Fields: ${widget.promptDetails.similarExpertise}\n\n"
+                              "Please generate an index for a personalized course outline tailored to the user's needs and preferences. The course should be structured in chapters, and each chapter should have a brief description. I will request each chapter's content separately.\n\n"
+                              "Here is the format I want you to follow for the index:\n"
+                              "[I] Chapter 1 (Week 1): Short description\n"
+                              "    [a] Subtopic 1: Short description\n"
+                              "    [b] Subtopic 2: Short description\n"
+                              "...\n"
+                              "[II] Chapter 2 (Week 2): Short description\n"
+                              "    [a] Subtopic 1: Short description\n"
+                              "    [b] Subtopic 2: Short description\n"
+                              "... and so on\n"
+                              "Skip the introductory phrases.";
 
                           // Automatically navigate to the next page
                           Future.delayed(Duration.zero, () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (context) => similarFieldQuestionEight(
-                                  promptDetails: widget.promptDetails,
-                                  user: widget.user,
+                                builder: (context) => ChatPage(
+                                  initialPrompt: customizedPrompt,
                                 ),
                               ),
                             );

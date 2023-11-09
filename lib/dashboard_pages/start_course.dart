@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:learning_path_ai/secret_key.dart';
 
 class ChatPage extends StatefulWidget {
   final String initialPrompt;
@@ -22,8 +23,7 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   final List<Map<String, String>> messages = [];
-  static const String OpenAiKey =
-      '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';
+  static const String OpenAiKey = apiKey;
 
   Future<String> chatGPTAPI(String prompt) async {
     messages.add({
@@ -57,7 +57,7 @@ class _ChatPageState extends State<ChatPage> {
           chatResponse = content;
           isLoading = false;
         });
-
+        print('API Response: $content');
         return content;
       }
       return 'An internal error occurred';

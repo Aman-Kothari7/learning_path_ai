@@ -60,7 +60,7 @@ class _topicQuestionOneState extends State<topicQuestionOne> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Just a few more details to generate your customized learning path...',
+                '>',
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
               SizedBox(
@@ -103,7 +103,6 @@ class _topicQuestionOneState extends State<topicQuestionOne> {
                               ),
                             );
                           } else {
-                            // Show an error message (e.g., a SnackBar) to inform the user that the field is required.
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text('Please enter a topic name.'),

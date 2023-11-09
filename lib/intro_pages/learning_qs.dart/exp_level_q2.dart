@@ -3,6 +3,7 @@ import 'package:learning_path_ai/Models/promt_details.dart';
 import 'package:learning_path_ai/Models/user_details.dart';
 import 'package:learning_path_ai/intro_pages/age_page.dart';
 import 'package:learning_path_ai/intro_pages/learning_qs.dart/hours_per_week_q3.dart';
+import 'package:learning_path_ai/intro_pages/learning_qs.dart/similar_field_q8.dart';
 import 'package:learning_path_ai/prompt_creation_pages/learning_form.dart';
 
 class expLevelQuestionTwo extends StatefulWidget {
@@ -55,7 +56,7 @@ class _expLevelQuestionTwoState extends State<expLevelQuestionTwo> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '2/8',
+                '>',
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
               SizedBox(
@@ -100,7 +101,7 @@ class _expLevelQuestionTwoState extends State<expLevelQuestionTwo> {
                           Future.delayed(Duration.zero, () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (context) => hoursPerWeekQuestionThree(
+                                builder: (context) => similarFieldQuestionEight(
                                   promptDetails: widget.promptDetails,
                                   user: widget.user,
                                 ),

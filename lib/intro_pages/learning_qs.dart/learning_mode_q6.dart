@@ -57,7 +57,7 @@ class _learningModeQuestionSixState extends State<learningModeQuestionSix> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '6/8',
+                '6/7',
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
               SizedBox(

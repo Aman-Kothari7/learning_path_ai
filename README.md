@@ -19,3 +19,21 @@ Learning path questions
 8) Do you have expertise in any similar field? Hint text could be "Topic: Python, Similar: Java"
 
 - Text box with more information about what subtopics to learn - parts of subpotics 
+
+
+"Given the following user information:\n"
+                    "Profession: ${userDetails.profession}\n"
+                    "Education Qualification: ${userDetails.education}\n"
+                    "Learning Objective: ${courseDetails.topicToLearn}\n"
+                    "Experience Level: ${courseDetails.experienceLevel}\n"
+                    "Time Commitment: ${courseDetails.hoursPerWeek} hours per week\n"
+                    "Preferred Course Length: ${courseDetails.preferredCourseLength} weeks\n"
+                    "Learning Goal: ${courseDetails.goal}\n"
+                    "Learning Mode: ${courseDetails.learningMode}\n"
+                    "Learning Preference: ${courseDetails.learningPreference}\n"
+                    "Expertise in Similar Fields: ${courseDetails.similarExpertise}\n\n"
+                    "Please generate an index for a personalized course outline tailored to the user's needs and preferences. The course should be structured in chapters, and each chapter should have a brief description. I will request each chapter's content separately.";
+
+
+"You are my teacher. Give me a small introduction on this topic:${courseDetails.topicToLearn} considering my experience level with this topic: ${courseDetails.experienceLevel}\n"
+                    "Skip the introductory phrases.";

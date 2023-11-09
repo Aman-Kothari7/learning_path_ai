@@ -38,8 +38,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: NamePage(
+      home: homePageDashboard(
         user: user,
+        promptDetails: promptDetails,
       ),
     );
   }

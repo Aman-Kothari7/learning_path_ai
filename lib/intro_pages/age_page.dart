@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:learning_path_ai/Models/promt_details.dart';
 import 'package:learning_path_ai/Models/user_details.dart';
 import 'package:learning_path_ai/intro_pages/age_page.dart';
 import 'package:learning_path_ai/intro_pages/profession_page.dart';
 
 class AgePage extends StatefulWidget {
   final UserDetails user;
+  final PromptDetails promptDetails;
 
-  const AgePage({super.key, required this.user});
+  const AgePage({super.key, required this.user, required this.promptDetails});
 
   @override
   _AgePageState createState() => _AgePageState();
@@ -84,8 +86,9 @@ class _AgePageState extends State<AgePage> {
                           }
                           Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => ProfessionPage(
-                                user:
-                                    widget.user), // Pass user to the next page
+                              user: widget.user,
+                              promptDetails: widget.promptDetails,
+                            ), // Pass user to the next page
                           ));
                         },
                       ),

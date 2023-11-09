@@ -53,7 +53,7 @@ class _courseLengthQuestionFourState extends State<courseLengthQuestionFour> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '4/8',
+                '4/7',
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
               SizedBox(

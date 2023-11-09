@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:learning_path_ai/Models/promt_details.dart';
 import 'package:learning_path_ai/Models/user_details.dart';
 import 'package:learning_path_ai/intro_pages/education_page.dart';
+import 'package:learning_path_ai/intro_pages/learning_qs.dart/hours_per_week_q3.dart';
 
 class ProfessionPage extends StatefulWidget {
   final UserDetails user;
+  final PromptDetails promptDetails;
 
-  const ProfessionPage({super.key, required this.user});
+  const ProfessionPage(
+      {super.key, required this.user, required this.promptDetails});
 
   @override
   _ProfessionPageState createState() => _ProfessionPageState();
@@ -42,7 +46,7 @@ class _ProfessionPageState extends State<ProfessionPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '>',
+                '2/7',
                 style: TextStyle(fontSize: 60, fontWeight: FontWeight.bold),
               ),
               SizedBox(
@@ -76,8 +80,9 @@ class _ProfessionPageState extends State<ProfessionPage> {
                           widget.user.profession = value;
                           // Save the value and navigate to the AgePage
                           Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => EducationPage(
+                            builder: (context) => hoursPerWeekQuestionThree(
                               user: widget.user,
+                              promptDetails: widget.promptDetails,
                             ),
                           ));
                         },

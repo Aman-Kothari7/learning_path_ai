@@ -52,7 +52,7 @@ class _hoursPerWeekQuestionThreeState extends State<hoursPerWeekQuestionThree> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '3/8',
+                '3/7',
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
               SizedBox(
