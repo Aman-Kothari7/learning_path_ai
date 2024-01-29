@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:learning_path_ai/Models/promt_details.dart';
 import 'package:learning_path_ai/Models/user_details.dart';
 import 'package:learning_path_ai/intro_pages/education_page.dart';
+import 'package:learning_path_ai/intro_pages/learning_qs.dart/goal_q5.dart';
 import 'package:learning_path_ai/intro_pages/learning_qs.dart/hours_per_week_q3.dart';
 
 class ProfessionPage extends StatefulWidget {
@@ -80,7 +81,7 @@ class _ProfessionPageState extends State<ProfessionPage> {
                           widget.user.profession = value;
                           // Save the value and navigate to the AgePage
                           Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => hoursPerWeekQuestionThree(
+                            builder: (context) => goalQuestionFive(
                               user: widget.user,
                               promptDetails: widget.promptDetails,
                             ),

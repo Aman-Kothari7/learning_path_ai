@@ -102,8 +102,6 @@ class _learningPrefQuestionSevenState extends State<learningPrefQuestionSeven> {
                               "Education Qualification: ${widget.user.education}\n"
                               "Learning Objective: ${widget.promptDetails.topicToLearn}\n"
                               "Experience Level: ${widget.promptDetails.experienceLevel}\n"
-                              "Time Commitment: ${widget.promptDetails.hoursPerWeek} hours per week\n"
-                              "Preferred Course Length: ${widget.promptDetails.preferredCourseLength} weeks\n"
                               "Learning Goal: ${widget.promptDetails.goal}\n"
                               "Learning Mode: ${widget.promptDetails.learningMode}\n"
                               "Learning Preference: ${widget.promptDetails.learningPreference}\n"
@@ -126,6 +124,8 @@ class _learningPrefQuestionSevenState extends State<learningPrefQuestionSeven> {
                               MaterialPageRoute(
                                 builder: (context) => ChatPage(
                                   initialPrompt: customizedPrompt,
+                                  promptDetails: widget.promptDetails,
+                                  userDetails: widget.user,
                                 ),
                               ),
                             );

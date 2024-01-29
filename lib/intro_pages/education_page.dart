@@ -49,7 +49,7 @@ class _EducationPageState extends State<EducationPage> {
             children: [
               Text(
                 'Answer following questions',
-                style: TextStyle(fontSize: 60, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 10,

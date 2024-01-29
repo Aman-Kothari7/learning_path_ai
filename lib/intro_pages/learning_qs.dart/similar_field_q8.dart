@@ -90,7 +90,7 @@ class _similarFieldQuestionEightState extends State<similarFieldQuestionEight> {
                           widget.promptDetails.similarExpertise = value;
 
                           String customizedPrompt =
-                              "You are my teacher. Give me a small introduction on this topic:${widget.promptDetails.topicToLearn} considering my experience level with this topic is: ${widget.promptDetails.experienceLevel} and I have expertise in this similar field:${widget.promptDetails.similarExpertise}\n"
+                              "You are my teacher. Give me a short introduction, under 100 words, on this topic:${widget.promptDetails.topicToLearn} considering my experience level with this topic is: ${widget.promptDetails.experienceLevel} and I have expertise in this similar field:${widget.promptDetails.similarExpertise}\n"
                               "Skip the introductory phrases.";
                           ;
                           Navigator.of(context).push(MaterialPageRoute(

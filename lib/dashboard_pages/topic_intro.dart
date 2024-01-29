@@ -67,6 +67,7 @@ class _topicIntroPageState extends State<topicIntroPage> {
           chatResponse = content;
           isLoading = false;
         });
+        print("API Response:$content");
 
         return content;
       }
@@ -94,52 +95,35 @@ class _topicIntroPageState extends State<topicIntroPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Visibility(
+              visible: isLoading,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  CircularProgressIndicator(),
+                  SizedBox(height: 16),
+                  Text("Loading your introduction"),
+                ],
+              ),
+            ),
             if (!isLoading)
-              const Padding(
-                padding: EdgeInsets.fromLTRB(50, 20, 50, 20),
-                child: Align(
-                  alignment: Alignment.centerLeft, // Left-aligned title
-                  child: Text(
-                    "Please read through your topic introduction,",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Card(
+                  elevation: 6,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Center(
+                      child: Text(
+                        chatResponse,
+                        style: TextStyle(
+                          fontSize: 24,
+                        ),
+                      ),
                     ),
                   ),
                 ),
               ),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Container(
-                decoration: !isLoading
-                    ? BoxDecoration(
-                        border:
-                            Border.all(color: Colors.black), // Black outline
-                      )
-                    : null, // No outline when loading
-                padding: const EdgeInsets.all(16.0),
-                child: isLoading
-                    ? Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          CircularProgressIndicator(),
-                          SizedBox(height: 16),
-                          Text("Loading your intro"),
-                        ],
-                      )
-                    : Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Center(
-                          child: Text(
-                            chatResponse,
-                            style: TextStyle(
-                              fontSize: 24,
-                            ),
-                          ),
-                        ),
-                      ),
-              ),
-            ),
             if (!isLoading)
               Padding(
                 padding: const EdgeInsets.fromLTRB(50, 20, 50, 20),
@@ -157,11 +141,17 @@ class _topicIntroPageState extends State<topicIntroPage> {
                         ),
                       );
                     },
-                    label: Text("My dashboard"),
-                    icon: Icon(Icons.arrow_right_alt),
+                    label: Text(
+                      "My dashboard",
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    icon: Icon(
+                      Icons.arrow_right_alt,
+                      color: Colors.black,
+                    ),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
-                      foregroundColor: Colors.white,
+                      backgroundColor: Colors.white,
+                      elevation: 6,
                     ),
                   ),
                 ),
